@@ -10,7 +10,7 @@ import AVFoundation
 import Foundation
 import UIKit
 
-class VideoImageProvider: AnimationImageProvider {
+public final class VideoImageProvider: AnimationImageProvider {
     
     let filepath: URL
     var fps: CMTimeScale = 30

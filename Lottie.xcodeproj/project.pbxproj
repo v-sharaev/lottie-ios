@@ -616,6 +616,8 @@
 		486E89F5220B790E007CD915 /* AnimationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E87A0220B78BF007CD915 /* AnimationContext.swift */; };
 		48F4EECD229F167F00949A97 /* TextCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486E8724220B78BF007CD915 /* TextCompositionLayer.swift */; };
 		D0BF09BE23251355003D86A2 /* VideoImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF09BD23251355003D86A2 /* VideoImageProvider.swift */; };
+		D0BF09BF23251926003D86A2 /* VideoImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF09BD23251355003D86A2 /* VideoImageProvider.swift */; };
+		D0BF09C02325192B003D86A2 /* VideoImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF09BD23251355003D86A2 /* VideoImageProvider.swift */; };
 		E654753422AAA91600FE590F /* AnimationTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAA7B722AA834F00F345A4 /* AnimationTextProvider.swift */; };
 		E654753522AAA91600FE590F /* AnimationTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAA7B722AA834F00F345A4 /* AnimationTextProvider.swift */; };
 		E654753622AAA91700FE590F /* AnimationTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAA7B722AA834F00F345A4 /* AnimationTextProvider.swift */; };
@@ -897,7 +899,6 @@
 				486E86FE220B78BF007CD915 /* BundleImageProvider.swift */,
 				486E86FF220B78BF007CD915 /* LottieView.swift */,
 				486E8700220B78BF007CD915 /* AnimationSubview.swift */,
-				D0BF09BD23251355003D86A2 /* VideoImageProvider.swift */,
 			);
 			path = MacOS;
 			sourceTree = "<group>";
@@ -925,6 +926,7 @@
 			children = (
 				25D5436B22306C8C00ED90FA /* Compatibility */,
 				486E8708220B78BF007CD915 /* FilepathImageProvider.swift */,
+				D0BF09BD23251355003D86A2 /* VideoImageProvider.swift */,
 				486E8709220B78BF007CD915 /* AnimatedSwitch.swift */,
 				486E870A220B78BF007CD915 /* BundleImageProvider.swift */,
 				486E870B220B78BF007CD915 /* UIColorExtension.swift */,
@@ -1739,6 +1741,7 @@
 				486E8856220B78E4007CD915 /* KeyframeInterpolator.swift in Sources */,
 				4866744222249C4E00258C00 /* TextAnimatorNode.swift in Sources */,
 				486E8857220B78E4007CD915 /* SingleValueProvider.swift in Sources */,
+				D0BF09C02325192B003D86A2 /* VideoImageProvider.swift in Sources */,
 				486E8858220B78E4007CD915 /* GroupInterpolator.swift in Sources */,
 				486E8859220B78E4007CD915 /* ItemsExtension.swift in Sources */,
 				486E885A220B78E4007CD915 /* ShapeRenderLayer.swift in Sources */,
@@ -1999,6 +2002,7 @@
 				486E8944220B78FF007CD915 /* KeyframeInterpolator.swift in Sources */,
 				4866744422249C4E00258C00 /* TextAnimatorNode.swift in Sources */,
 				486E8945220B78FF007CD915 /* SingleValueProvider.swift in Sources */,
+				D0BF09BF23251926003D86A2 /* VideoImageProvider.swift in Sources */,
 				486E8946220B78FF007CD915 /* GroupInterpolator.swift in Sources */,
 				486E8947220B78FF007CD915 /* ItemsExtension.swift in Sources */,
 				486E8948220B78FF007CD915 /* ShapeRenderLayer.swift in Sources */,
