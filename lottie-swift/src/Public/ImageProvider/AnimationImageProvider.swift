@@ -19,5 +19,5 @@ import CoreGraphics
  or to Cache images.
  */
 public protocol AnimationImageProvider {
-  func imageForAsset(asset: ImageAsset) -> CGImage?
+  func imageForAsset(asset: ImageAsset, seconds: CGFloat?) -> CGImage?
 }

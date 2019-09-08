@@ -362,6 +362,10 @@ final public class AnimationView: LottieView {
     animationLayer?.reloadImages()
   }
     
+  public func reloadImages(seconds: CGFloat) {
+     animationLayer?.reloadImages(seconds: seconds)
+  }
+    
   /// Forces the AnimationView to redraw its contents.
   public func forceDisplayUpdate() {
     animationLayer?.forceDisplayUpdate()

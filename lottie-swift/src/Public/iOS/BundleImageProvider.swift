@@ -33,7 +33,7 @@ public class BundleImageProvider: AnimationImageProvider {
     self.searchPath = searchPath
   }
   
-  public func imageForAsset(asset: ImageAsset) -> CGImage? {
+  public func imageForAsset(asset: ImageAsset, seconds: CGFloat?) -> CGImage? {
     
     if asset.name.hasPrefix("data:"),
       let url = URL(string: asset.name),
