@@ -13,7 +13,10 @@ import UIKit
 public final class VideoImageProvider: AnimationImageProvider {
     
     let filepath: URL
-    var fps: CMTimeScale = 30
+    public var fps: CMTimeScale = 30
+    public var cropFrame: CGRect?
+    public var imageExtension = ".jpeg"
+    public var videoExtension = ".mov"
     
     /**
      Initializes an image provider with a specific filepath.
@@ -66,6 +69,12 @@ public final class VideoImageProvider: AnimationImageProvider {
             var images = [CGFloat: Data]()
             imageGenerator.generateCGImagesAsynchronously(forTimes: times,
                                                           completionHandler: { [weak self] (_, image, _, _, _) in
+                                                            
+                var image = image
+                if let cropFrame = self?.cropFrame {
+                    let croppedImage = image?.cropping(to: cropFrame)
+                    image = croppedImage
+                }
                 
                 if let image = image {
                     let uiImage = UIImage(cgImage: image)
@@ -75,7 +84,7 @@ public final class VideoImageProvider: AnimationImageProvider {
                 }
                 
                 seconds = seconds + CGFloat(1) / CGFloat(fpsCopy)
-                                                            
+                
                 if maxSeconds < seconds {
                     self?.images[key] = images
                     
@@ -103,7 +112,7 @@ public final class VideoImageProvider: AnimationImageProvider {
     private func createAVAsset(name: String, directory: String?) -> String? {
         
         // By default name contains .jpeg like image
-        let name = name.replacingOccurrences(of: ".jpeg", with: ".mov")
+        let name = name.replacingOccurrences(of: imageExtension, with: videoExtension)
         
         var directPath: String? = filepath.appendingPathComponent(name).path
         if !FileManager.default.fileExists(atPath: directPath ?? "") {
