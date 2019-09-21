@@ -34,6 +34,7 @@ public final class VideoImageProvider: AnimationImageProvider {
     
     private var assetImageGenerators = [String: AVAssetImageGenerator]()
     private var images = [String: [CGFloat: Data]]()
+    private var keys = [String: [CGFloat]]()
     
     public func prepareImagesForAssetName(name: String, completion: @escaping (() -> Void)) {
         
@@ -87,6 +88,7 @@ public final class VideoImageProvider: AnimationImageProvider {
                 
                 if maxSeconds < seconds {
                     self?.images[key] = images
+                    self?.createKeys(key: key)
                     
                     DispatchQueue.main.async {
                         completion()
@@ -100,7 +102,8 @@ public final class VideoImageProvider: AnimationImageProvider {
         
         guard let key = createAVAsset(name: asset.name, directory: asset.directory),
             let images = images[key],
-            let data = images[seconds ?? 0],
+            let nearestSecond = findNearestSecondFor(seconds, key: key),
+            let data = images[nearestSecond],
             let image = UIImage.init(data: data, scale: 1.0)?.cgImage else {
                 
                 return nil
@@ -141,5 +144,39 @@ public final class VideoImageProvider: AnimationImageProvider {
         assetImageGenerators[path] = assetImageGenerator
         
         return path
+    }
+    
+    private func createKeys(key: String) {
+        guard let images = images[key] else {
+            return
+        }
+        
+        let keys = images.keys.sorted()
+        self.keys[key] = keys
+    }
+    
+    private func findNearestSecondFor(_ second: CGFloat?, key: String) -> CGFloat? {
+        guard let second = second,
+            let keys = keys[key] else {
+                return nil
+        }
+        
+        var lowerIndex = 0;
+        var upperIndex = keys.count - 1
+        
+        while (true) {
+            let currentIndex = (lowerIndex + upperIndex) / 2
+            if(keys[currentIndex] == second) {
+                return second
+            } else if (lowerIndex > upperIndex) {
+                return keys[upperIndex]
+            } else {
+                if (keys[currentIndex] > second) {
+                    upperIndex = currentIndex - 1
+                } else {
+                    lowerIndex = currentIndex + 1
+                }
+            }
+        }
     }
 }
